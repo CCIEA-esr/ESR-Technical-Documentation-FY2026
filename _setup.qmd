@@ -22,7 +22,7 @@ getMetadata <-function(erddap_id){
 #drive_download( as_id(file_id) , path = 'metadata.csv', overwrite = TRUE)
 #}
 
-  df = read.csv('metadata.csv')
+  df = read.csv('CCIEA_metadata.csv')
   df_trimmed<- df %>% select(c('Component_Section', 'Subcomponent', 'ERDDAP_Dataset_ID', 'ERDDAP_query_value', 'Contact', 'Title', 'Institution', 'Source_Data', 'Additional_Calculations', 'region', 'latitude', 'longitude', 'latitude2', 'longitude2','Sampling_frequency','Figure_grouping','year_begin','year_end'))
   meta <- df_trimmed %>% filter(ERDDAP_Dataset_ID==erddap_id)
   meta <- meta[order(meta$Figure_grouping),]

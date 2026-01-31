@@ -538,6 +538,7 @@ div.csl-indent {
 <li><strong>Institution: </strong>NOAA SWFSC</li>
 <li><strong>Source Data: </strong>Isaac Schroeder (isaac.schroeder@noaa.gov) Dissolved oxygen is measured by an automated oxygen titrator mounted to the CTD rosette and oxygen data is sampled at depths consistent with those of temperature and salinity. Additional information can be found at <a href="http://www.calcofi.org/new.data/index.php/reporteddata/hydrographic-data/introductions" target="_blank">http://www.calcofi.org/new.data/index.php/reporteddata/hydrographic-data/introductions</a>.</li>
 <li><strong>Additional Calculations: </strong>Each unique depth profile of dissolved oxygen (DO) was linearly interpolated on 1 m intervals, without any extrapolation for intervals above/below sampled depths. Outliers a profile might contain were removed by applying a Hample filter. The filter had a window size of 5 m above and below an observation, and considers the observation an outlier if a sample differs from the median by more than four standard deviations (see <a href="https://www.mathworks.com/help/signal/ref/hampel.html" target="_blank">https://www.mathworks.com/help/signal/ref/hampel.html</a>). Outliers are filled by linear interpolation of the points above and below. Then the DO at 150 m (DO@150) was extracted from the linearly interpolated profile. A time series of DO@150 was created using each unique profile of DO data available. A monthly mean time series was calculated from this time series. A standard deviation value was calculated if more than one profile was made during a given month, otherwise the standard deviation value was NaN (not a number).</li>
+<li><strong>Download data: </strong> <a href="https://raw.githubusercontent.com/CCIEA-esr/CCIEA-uploader/refs/heads/master/data/timeseries_data/oc_do_calcofi_M.csv">csv file</a></li>
 </ul>
 <p></p>
 <p><strong>Newport Line Indicators</strong></p>
@@ -554,11 +555,9 @@ div.csl-indent {
 <li><strong>Institution: </strong>NOAA SWFSC</li>
 <li><strong>Source Data: </strong>Dr.&nbsp;Jennifer Fisher ( jennifer.fisher@noaa.gov) Dissolved oxygen is measured by an automated oxygen titrator mounted to the CTD rosette and oxygen data is sampled at depths conin Peterson, J.O, Morgan, C. A., Peterson, W.T., Di Lorenzo, E. 2013) Seasonal and interannual variation in the extent of hypoxia in the northern California Current from 1998-2012, Limnology and Oceanography, 58(6):2279-2292, DOI:10.4319/lo.2013.58.6.2279.</li>
 <li><strong>Additional Calculations: </strong>Each unique depth profile of dissolved oxygen (DO) was linearly interpolated on 1 m intervals, without any extrapolation for intervals above/below sampled depths. Outliers a profile might contain were removed by applying a Hample filter. The filter had a window size of 5 m above and below an observation, and considers the observation an outlier if a sample differs from the median by more than four standard deviations (see <a href="https://www.mathworks.com/help/signal/ref/hampel.html" target="_blank">https://www.mathworks.com/help/signal/ref/hampel.html</a>). Outliers are filled by linear interpolation of the points above and below. Then the DO at 150 m (DO@150) was extracted from the linearly interpolated profile. A time series of DO@150 was created using each unique profile of DO data available. A monthly mean time series was calculated from this time series. A standard deviation value was calculated if more than one profile was made during a given month, otherwise the standard deviation value was NaN (not a number).</li>
+<li><strong>Download data: </strong> <a href="https://raw.githubusercontent.com/CCIEA-esr/CCIEA-uploader/refs/heads/master/data/timeseries_data/oc_do_Newport_M.csv">csv file</a></li>
 </ul>
 <p></p>
-<p><strong>Indicator Download </strong></p>
-<p>ERDDAP™ link:</p>
-<p><a href="https://oceanview.pfeg.noaa.gov/erddap/tabledap/cciea_OC_DO.html" class="uri">https://oceanview.pfeg.noaa.gov/erddap/tabledap/cciea_OC_DO.html</a></p>
 <p><strong>References</strong></p>
 <div class="sectionrefs">
 

@@ -7,6 +7,7 @@
 
 library(tidyverse)
 library(dplyr)
+library(httr)
 
 #-------- getMetadata(erddap_id) --------------
 # Get subset of metadata by column and erddap_id
@@ -23,8 +24,8 @@ getMetadata <-function(erddap_id){
 #}
 
   df = read.csv('CCIEA_metadata.csv')
-  df_trimmed<- df %>% select(c('Component_Section', 'Subcomponent', 'ERDDAP_Dataset_ID', 'ERDDAP_query_value', 'Contact', 'Title', 'Institution', 'Source_Data', 'Additional_Calculations', 'region', 'latitude', 'longitude', 'latitude2', 'longitude2','Sampling_frequency','Figure_grouping','year_begin','year_end'))
-  meta <- df_trimmed %>% filter(ERDDAP_Dataset_ID==erddap_id)
+  df_trimmed<- df %>% select(c('Component_Section', 'Subcomponent', 'ERDDAP_Dataset_ID', 'ERDDAP_query_value', 'Contact', 'Title', 'Institution', 'Source_Data', 'Additional_Calculations', 'region', 'latitude', 'longitude', 'latitude2', 'longitude2','Sampling_frequency','Figure_grouping','year_begin','year_end','PI_filename','cciea_filename','serve_flag','no_download'))
+  meta <- df_trimmed %>% filter(ERDDAP_Dataset_ID==erddap_id & serve_flag==1)
   meta <- meta[order(meta$Figure_grouping),]
   return(meta)
   }
@@ -36,7 +37,7 @@ getMetadata <-function(erddap_id){
 getMultiMetadata <-function(erddap_id){
   num_ind = length(erddap_id)
   metalist <- list()
-  for (i in 1:num_ind){
+  for (i in seq_len(num_ind)){
     m <- getMetadata(erddap_id[i])
     metalist[[i]] <- m
     }
@@ -53,7 +54,7 @@ one_id_multimeta <-function(erddap_id){
   meta=getMetadata(erddap_id)
   num_ind = nrow(meta)
 
-  for (i in 1:num_ind){
+  for (i in seq_len(num_ind)){
     cat("**",meta$Title[i],"**\n\n",sep="")
     print_meta(meta,i)
     cat("\n")
@@ -68,15 +69,20 @@ one_id_multimeta <-function(erddap_id){
 one_id_bylat <-function(erddap_id){
   meta=getMetadata(erddap_id)
   num_ind = nrow(meta)
+  if(num_ind>0){
   cat("<p>* **Latitudes:**\n")
 
-  for (i in 1:num_ind){
+  for (i in seq_len(num_ind)){
     lat2=""
     if(!is.na(meta$latitude2[i]))lat2=paste(" - ",meta$latitude2[i],sep="")
     cat("     + ",meta$latitude[i],lat2," N\n",sep="")
     }
     print_meta(meta,1)
     cat("</p>")
+  }
+  else{
+    cat("<p>* **No data available**\n")
+  }
   }
   
 #----------one_id_byquery(erddap_id,query_title) ------------
@@ -85,13 +91,18 @@ one_id_bylat <-function(erddap_id){
 one_id_byquery <-function(erddap_id,query_title){
   meta=getMetadata(erddap_id)
   num_ind = nrow(meta)
+  if(num_ind>0){
   cat("<p>* **",query_title,":**\n",sep="")
 
-  for (i in 1:num_ind){
+  for (i in seq_len(num_ind)){
     cat("     + ",meta$ERDDAP_query_value[i],"\n")
     }
     print_meta(meta,1)
     cat("</p>")
+  }
+  else{
+   cat("<p>* **No data available**\n",sep="") 
+  }
   }
    
 #----------one_id_bytitle(erddap_id,query_title) ------------
@@ -100,13 +111,19 @@ one_id_byquery <-function(erddap_id,query_title){
 one_id_bytitle <-function(erddap_id,query_title){
   meta=getMetadata(erddap_id)
   num_ind = nrow(meta)
+  if(num_ind>0){
   cat("<p>* **",query_title,":**\n",sep="")
 
-  for (i in 1:num_ind){
+  for (i in seq_len(num_ind)){
     cat("     + ",sub(".*; ","",meta$Title[i]),"\n")
     }
     print_meta(meta,1)
     cat("</p>")
+    
+  }
+  else{
+    cat("<p>* **No data available**\n",sep="")
+  }
   }
    
 #----------one_id_by_title_query(erddap_id,title_phrase,query_title,latlon) ------------
@@ -118,9 +135,10 @@ one_id_bytitle <-function(erddap_id,query_title){
 one_id_by_title_query <-function(erddap_id,title_phrase,query_title,latlon){
   meta=getMetadata(erddap_id)
   num_ind = nrow(meta)
-  cat("<p>* **",query_title,":**\n",sep="")
+   if(num_ind>0){
+ cat("<p>* **",query_title,":**\n",sep="")
 
-  for (i in 1:num_ind){
+  for (i in seq_len(num_ind)){
     if(grepl(title_phrase,meta$Title[i])){
       #hack to make CalCOFI station locations prettier
       lat=""
@@ -143,6 +161,10 @@ one_id_by_title_query <-function(erddap_id,title_phrase,query_title,latlon){
     }
     print_meta(meta,cind)
    cat("</p>")
+   }
+  else{
+    cat("<p>* **No data available**\n",sep="")
+  }
   }
   
 #----------one_id_by_twotitle_query(erddap_id,title_phrase1,title_phrase2,query_title) ------------
@@ -155,6 +177,7 @@ one_id_by_title_query <-function(erddap_id,title_phrase,query_title,latlon){
 one_id_by_twotitle_query <-function(erddap_id,title_phrase1,title_phrase2,query_title){
   meta=getMetadata(erddap_id)
   num_ind = nrow(meta)
+  if(num_ind>0){
   nphrase1=length(title_phrase1)
   nphrase2=length(title_phrase2)
   
@@ -162,7 +185,7 @@ one_id_by_twotitle_query <-function(erddap_id,title_phrase1,title_phrase2,query_
     for(k in 1:nphrase2){
       cat("<p>**",query_title,title_phrase2[k]," ",title_phrase1[j]," indicators:**\n\n",sep="")
       cat("* **",title_phrase1[j],"s:**\n",sep="")
-        for (i in 1:num_ind){
+        for (i in seq_len(num_ind)){
           if(grepl(title_phrase2[k],meta$Title[i]) & grepl(title_phrase1[j],meta$Title[i])){
             cat("     + ",meta$region[i],"\n")
             cind=i
@@ -171,7 +194,11 @@ one_id_by_twotitle_query <-function(erddap_id,title_phrase1,title_phrase2,query_
          print_meta(meta,cind)
          cat("</p>")
          }
-       } 
+  } 
+  }
+  else{
+       cat("<p>* **No data available**\n",sep="")
+  }
   }
   
 #----------multi_id_onemeta(erddap_id) ------------
@@ -181,14 +208,19 @@ one_id_by_twotitle_query <-function(erddap_id,title_phrase1,title_phrase2,query_
 multi_id_onemeta <-function(erddap_id){
   meta <- getMultiMetadata(erddap_id)
   num_ind = nrow(meta)
-  
+  if(num_ind>0){
   cat("<p>* **Indicators:**\n")
-  for (i in 1:num_ind){
+  for (i in seq_len(num_ind)){
     cat("     + ",meta$Title[i],"\n")
     }
     print_meta(meta,2)
     cat("</p>")
- }
+}
+  else{
+       cat("<p>* **No data available**\n",sep="")
+  }
+
+    }
 
 #-----------print_meta(meta,i)----------------
 # Used by functions above that print metadata, used for all pages
@@ -201,6 +233,26 @@ print_meta <- function(meta,i){
     cat("* **Institution: **",meta$Institution[i],"\n",sep="")
     cat("* **Source Data: **",meta$Source_Data[i],"\n",sep="")
     if(meta$Additional_Calculations[i]!="")cat("* **Additional Calculations: **",meta$Additional_Calculations[i],"\n",sep="")
+    
+   base="https://raw.githubusercontent.com/CCIEA-esr/CCIEA-uploader/refs/heads/master/data/timeseries_data/";
+   cciea_filename_url=paste0(base,meta$cciea_filename[i],sep="")
+   PI_filename_url=paste0(base,meta$PI_filename[i],sep="")
+   if(is.na(meta$no_download[i])){
+    if(url_check(cciea_filename_url)){
+      cat("* **Download data: ** [csv file](",cciea_filename_url,")\n",sep="")
+    }
+     else if (url_check(PI_filename_url)){
+      cat("* **Download data: ** [csv file](",PI_filename_url,")\n",sep="")
+     }
+     else{
+       cat("* **No download available **","\n",sep="")
+     }
+   }
+   else if(meta$no_download[i]==1) {
+     cat("* **Private dataset, no download available **","\n",sep="")
+   }
+   
+ 
 }
   
 #-----------print_meta_about(meta,i)----------------
@@ -229,14 +281,27 @@ print_meta_remainder <- function(meta,i){
 #-----------get_erddap_link(erddap_id)----------------
 # print the ERDDAP link(s) for a given set of erddap_id(s)
 get_erddap_link <-function(erddap_id){
-  s=""
-  if(length(erddap_id)>1)s="s"
-  cat("**Indicator Download",s," **\n\n",sep="")
-  cat("ERDDAP&trade; link",s,": \n\n",sep="")
-  for(i in 1:length(erddap_id)){
-    cat("<https://oceanview.pfeg.noaa.gov/erddap/tabledap/",erddap_id[i],".html> \n\n",sep="")
-    }
+#  s=""
+#  if(length(erddap_id)>1)s="s"
+#  cat("**Indicator Download",s," **\n\n",sep="")
+#  cat("ERDDAP&trade; link",s,": \n\n",sep="")
+#  for(i in 1:length(erddap_id)){
+#    cat("<https://oceanview.pfeg.noaa.gov/erddap/tabledap/",erddap_id[i],".html> \n\n",sep="")
+#    }
+  cat("")
   }
+
+url_check <- function(url) {
+  # Perform a HEAD request
+  response <- HEAD(url, config(followlocation = 0L)) # Prevent following redirects initially
+  status <- status_code(response)
   
+  # Check if the status code indicates success (200-299 range)
+  if (status >= 200 && status < 300) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+} 
 ```
 

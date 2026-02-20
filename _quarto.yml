@@ -104,6 +104,8 @@ bibliography: esr-bibliography.bib
 format:
   html:
     theme: cosmo
+    link-external-newwindow: true
+    link-external-icon: true # Optional: shows an icon next to the link
   pdf:
     documentclass: scrreprt
     toc: true

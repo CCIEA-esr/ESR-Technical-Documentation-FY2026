@@ -524,7 +524,9 @@ div.csl-indent {
 
 <p><strong>Description</strong> Abundance indicators for forage in the Southern CCE come from fish and squid larvae collected in the spring (May-June) across all core stations of the CalCOFI survey. Larval data are indicators of the relative regional abundances of adult forage fish, such as sardines and anchovy, and other species, including certain groundfish, market squid, and mesopelagic fishes. The survey samples a variety of fish and invertebrate larvae (&lt;5 d old) from several taxonomic and functional groups, collected via oblique vertical tows of fine mesh Bongo nets to 212 m depth. In 2020, the spring larval survey was canceled due to COVID-19, and thus no data are available for that year, but survey operations resumed in 2021.</p>
 <p>Pelagic forage larvae data from the Southern CCE were provided by A. Thompson, NMFS/SWFSC, from spring CalCOFI surveys (<a href="https://calcofi.org/" class="uri">https://calcofi.org/</a>); data were not collected in 2020 due to survey cancellations associated with the COVID pandemic.</p>
-<p>Dr.&nbsp;A. Thompson, NMFS/SWFSC, created the heat plots coupled with chronological clustering analysis to describe forage dynamics in the California Current Ecosystem in our annual Ecosystem Status reports. Detailed methods can be found in <span class="citation" data-cites="thompson2019indicators">Thompson et al. (<a href="#ref-thompson2019indicators" role="doc-biblioref">2019</a>)</span>, but a brief synopsis follows. To determine when changes in assemblage structure took place, we ran chronological cluster analyses based on Bray-Curtis dissimilarity matrices calculated from ln(x+1)-transformed mean abundances of each taxon <span class="citation" data-cites="juggins2015rioja">(<a href="#ref-juggins2015rioja" role="doc-biblioref">Juggins 2015</a>)</span>. Chronological clustering identifies which years have similar assemblages with the constraint that years are sequential. To help visualize taxa dynamics, we couple the chronological dendrograms with heat maps showing taxa Z-scores of species abundances in each year. We qualitatively discern the deepest breaks in assemblage structure based on the dendrograms and place vertical lines on the heatmaps to designate major changes to the forage assemblage.</p>
+<p>Dr.&nbsp;A. Thompson, NMFS/SWFSC, created the heat plots coupled with chronological clustering analysis to describe forage dynamics in the California Current Ecosystem in our annual Ecosystem Status reports. Detailed methods can be found in <span class="citation" data-cites="thompson2019indicators">Thompson et al. (<a href="#ref-thompson2019indicators" role="doc-biblioref">2019</a>)</span>, but a brief synopsis follows: To determine when changes in assemblage structure took place, we ran chronological cluster analyses based on Bray-Curtis dissimilarity matrices calculated from ln(x+1)-transformed mean abundances of each taxon <span class="citation" data-cites="juggins2015rioja">(<a href="#ref-juggins2015rioja" role="doc-biblioref">Juggins 2015</a>)</span>. Chronological clustering identifies which years have similar assemblages with the constraint that years are sequential.</p>
+<p>To help visualize taxa dynamics, we couple the chronological dendrograms with heat maps showing taxa Z-scores of species abundances in each year. We qualitatively discern the deepest breaks in assemblage structure based on the dendrograms and place vertical lines on the heatmaps to designate major changes to the forage assemblage.</p>
+<p>The color scheme is based on the value of the z-score. The z-score is the (abundance of a species in a given year - mean abundance over the time series)/standard deviation. A negative value means that it is below the long-term mean and positive above the mean. The z-score ranges from about -2.4 to +2.4. The color scale goes from red = low, white = average, blue = high. Z-scores were used instead of abundances because in each data set there is typically one or two species that are much more abundant than the others, swamping the color change effect for the other species. By running z-scores you can see how much a given species changes relative to their range in abundance.</p>
 <p><strong>Indicators</strong></p>
 <p>
 </p><ul>
@@ -547,7 +549,7 @@ div.csl-indent {
 <li>southern mesopelagics</li>
 </ul></li>
 <li><strong>Component Category: </strong>Ecological Integrity</li>
-<li><strong>Time Range: </strong>1997 - 2024</li>
+<li><strong>Time Range: </strong>1997 - 2025</li>
 <li><strong>CCIEA Data Contact: </strong>andrew.thompson@noaa.gov</li>
 <li><strong>Institution: </strong>NOAA SWFSC</li>
 <li><strong>Source Data: </strong>Dr.&nbsp;Andrew Thompson (NOAA; andrew.thompson@noaa.gov); derived from spring <a href="https://calcofi.org/" target="_blank">CalCOFI surveys</a></li>
@@ -653,6 +655,13 @@ Thompson, Andrew R, Chris J Harvey, William J Sydeman, Caren Barceló, Steven J 
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

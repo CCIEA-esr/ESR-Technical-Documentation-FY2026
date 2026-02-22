@@ -1,0 +1,56 @@
+# Github Actions to read publish CCIEA ESR Tech Docs to gh-pages
+# Need to grant read/write permissions for Action to do the commits
+# Settings -> Actions -> General -> Workflow permissions
+    name: Access Google Drive
+# Use the following to update on push
+#    on:
+#      push:
+#        branches: master
+    on:
+      workflow_dispatch:
+
+    jobs:
+      drive-access:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Check out repository
+            uses: actions/checkout@v4
+
+          - name: Authenticate to Google Cloud
+            uses: google-github-actions/auth@v2
+            with:
+              credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+              
+          - name: Install system dependencies
+            run: |
+              sudo apt-get update
+              sudo apt-get install -y libcairo2-dev pkg-config
+              
+          - name: Set up R
+            uses: r-lib/actions/setup-r@v2
+              
+          - name: Install packages
+            uses: r-lib/actions/setup-r-dependencies@v2
+            with:
+              cache: always
+              packages: |
+                any::tidyverse
+                any::httr
+                
+          - name: Set up Quarto
+            uses: quarto-dev/quarto-actions/setup@v2
+            env:
+              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          - name: Install Quarto and render project
+            run: quarto render
+            env:
+              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              target: gh-pages
+            
+          - name: Deploy to GitHub Pages
+            uses: peaceiris/actions-gh-pages@v3
+            with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              publish_dir: ./docs

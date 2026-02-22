@@ -20,11 +20,6 @@
           - name: Check out repository
             uses: actions/checkout@v4
 
-          - name: Authenticate to Google Cloud
-            uses: google-github-actions/auth@v2
-            with:
-              credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-              
           - name: Install system dependencies
             run: |
               sudo apt-get update

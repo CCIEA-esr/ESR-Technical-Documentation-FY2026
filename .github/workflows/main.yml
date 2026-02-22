@@ -1,7 +1,7 @@
 # Github Actions to read publish CCIEA ESR Tech Docs to gh-pages
 # Need to grant read/write permissions for Action to do the commits
 # Settings -> Actions -> General -> Workflow permissions
-    name: Build Tech doc
+    name: Build Tech Doc
 # Use the following to update on push
 #    on:
 #      push:

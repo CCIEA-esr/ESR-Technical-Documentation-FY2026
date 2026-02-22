@@ -8,6 +8,10 @@
 #        branches: master
     on:
       workflow_dispatch:
+      push:
+        branches: [main]
+      pull_request:
+        branches: [main]
 
     jobs:
       drive-access:
@@ -42,13 +46,15 @@
             env:
               GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          - name: Install Quarto and render project
-            run: quarto render
-            env:
-              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            
-          - name: Deploy to GitHub Pages
-            uses: peaceiris/actions-gh-pages@v3
+         # This renders the project (good for catching errors in PRs)
+          - name: Render Quarto Project
+            uses: quarto-dev/quarto-actions/render@v2
+
+          # This only runs if the event is a 'push' (merging to main)
+          - name: Publish to GitHub Pages
+            if: github.event_name == 'push'
+            uses: quarto-dev/quarto-actions/publish@v2
             with:
-              github_token: ${{ secrets.GITHUB_TOKEN }}
-              publish_dir: ./docs
+              target: gh-pages
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

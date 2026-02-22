@@ -46,8 +46,6 @@
             run: quarto render
             env:
               GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
-              target: gh-pages
             
           - name: Deploy to GitHub Pages
             uses: peaceiris/actions-gh-pages@v3

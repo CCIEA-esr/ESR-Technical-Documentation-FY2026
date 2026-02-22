@@ -49,6 +49,8 @@
          # This renders the project (good for catching errors in PRs)
           - name: Render Quarto Project
             uses: quarto-dev/quarto-actions/render@v2
+            env:
+              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
           # This only runs if the event is a 'push' (merging to main)
           - name: Publish to GitHub Pages

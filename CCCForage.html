@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>19&nbsp; Central California Current Forage – CCIEA ESR Technical Documentation</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -55,15 +57,14 @@ div.csl-indent {
 <link href="./figures/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cd43be99cf0a9c95be8483ae756cf8df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-65711dea424eaee0b27143d063beaa38.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -526,7 +527,7 @@ div.csl-indent {
 
 <p><strong>Description</strong> The Central CCE forage survey (known as the Rockfish Recruitment and Ecosystem Assessment Survey, RREAS) samples much of the West Coast each May to mid-June, using midwater trawls sampling between 30 and 45 m depths during nighttime hours. The survey targets young-of-the-year (YOY) rockfish species and a variety of other YOY and adult forage species, market squid, adult krill, and gelatinous zooplankton. Juvenile rockfish, anchovy, krill, and market squid are among the most important prey for CCE predators <span class="citation" data-cites="szoboszlai2015forage">(<a href="#ref-szoboszlai2015forage" role="doc-biblioref">Szoboszlai et al. 2015</a>)</span>. Time series presented here are from the “Core Area” of that survey, centered off Monterey Bay. Catch data were standardized by using a delta-GLM to estimate year effects while accounting for spatial and temporal covariates to yield relative abundance indices, shown with their approximate 95% confidence limits <span class="citation" data-cites="santora2021diverse">(<a href="#ref-santora2021diverse" role="doc-biblioref">Santora et al. 2021</a>)</span>. This modeling approach was adopted in recent reports to reduce bias in 2020, when sampling effort and spatial coverage was severely constrained by the COVID-19 pandemic.</p>
 <p>Pelagic forage data from the Central CCE were provided by J. Field, T. Rogers, K. Sakuma, and J. Santora, NMFS/SWFSC, from the SWFSC Rockfish Recruitment and Ecosystem Assessment Survey (https://go.usa.gov/xGMfR).</p>
-<p>Dr.&nbsp;A. Thompson, NMFS/SWFSC, created the heat plots coupled with chronological clustering analysis to describe forage dynamics in the California Current Ecosystem in our annual Ecosystem Status reports. Detailed methods can be found in <span class="citation" data-cites="thompson2019indicators">Thompson et al. (<a href="#ref-thompson2019indicators" role="doc-biblioref">2019</a>)</span>, but a brief synopsis follows: To determine when changes in assemblage structure took place, we ran chronological cluster analyses based on Bray-Curtis dissimilarity matrices calculated from ln(x+1)-transformed mean abundances of each taxon <span class="citation" data-cites="juggins2015rioja">(<a href="#ref-juggins2015rioja" role="doc-biblioref">Juggins 2015</a>)</span>. Chronological clustering identifies which years have similar assemblages with the constraint that years are sequential.</p>
+<p>Dr.&nbsp;A. Thompson, NMFS/SWFSC, created the heat plots coupled with chronological clustering analysis to describe forage dynamics in the California Current Ecosystem in our annual Ecosystem Status reports. Detailed methods can be found in <span class="citation" data-cites="thompson2019indicators"><span class="nocase">Thompson et al.</span> (<a href="#ref-thompson2019indicators" role="doc-biblioref">2019</a>)</span>, but a brief synopsis follows: To determine when changes in assemblage structure took place, we ran chronological cluster analyses based on Bray-Curtis dissimilarity matrices calculated from ln(x+1)-transformed mean abundances of each taxon <span class="citation" data-cites="juggins2015rioja">(<a href="#ref-juggins2015rioja" role="doc-biblioref">Juggins 2015</a>)</span>. Chronological clustering identifies which years have similar assemblages with the constraint that years are sequential.</p>
 <p>To help visualize taxa dynamics, we couple the chronological dendrograms with heat maps showing taxa Z-scores of species abundances in each year. We qualitatively discern the deepest breaks in assemblage structure based on the dendrograms and place vertical lines on the heatmaps to designate major changes to the forage assemblage.</p>
 <p>The color scheme is based on the value of the z-score. The z-score is the (abundance of a species in a given year - mean abundance over the time series)/standard deviation. A negative value means that it is below the long-term mean and positive above the mean. The z-score ranges from about -2.4 to +2.4. The color scale goes from red = low, white = average, blue = high. Z-scores were used instead of abundances because in each data set there is typically one or two species that are much more abundant than the others, swamping the color change effect for the other species. By running z-scores you can see how much a given species changes relative to their range in abundance.</p>
 <p><strong>Indicators</strong></p>
@@ -558,24 +559,27 @@ div.csl-indent {
 <li><strong>Download data: </strong> <a href="https://raw.githubusercontent.com/CCIEA-esr/CCIEA-uploader/refs/heads/master/data/timeseries_data/Forage_CCC_RREAS_index.csv">csv file</a></li>
 </ul>
 <p></p>
+<p><strong>Indicator Download </strong></p>
+<p>ERDDAP™ link:</p>
+<p><a href="https://oceanview.pfeg.noaa.gov/erddap/tabledap/cciea_EI_FBC.html" class="uri">https://oceanview.pfeg.noaa.gov/erddap/tabledap/cciea_EI_FBC.html</a></p>
 <p><strong>References</strong></p>
 <div class="sectionrefs">
 
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-juggins2015rioja" class="csl-entry" role="listitem">
-Juggins, Steve. 2015. <span>“Rioja: Analysis of Quaternary Science Data.”</span>
+Juggins, Steve. 2015. <em>Rioja: Analysis of Quaternary Science Data</em>.
 </div>
 <div id="ref-santora2021diverse" class="csl-entry" role="listitem">
-Santora, Jarrod A, Tanya L Rogers, Megan A Cimino, Keith M Sakuma, Keith D Hanson, EJ Dick, Jaime Jahncke, Pete Warzybok, and John C Field. 2021. <span>“<span class="nocase">Diverse integrated ecosystem approach overcomes pandemic-related fisheries monitoring challenges</span>.”</span> <em>Nature Communications</em> 12 (1): 1–10.
+Santora, Jarrod A, Tanya L Rogers, Megan A Cimino, et al. 2021. <span>“<span class="nocase">Diverse integrated ecosystem approach overcomes pandemic-related fisheries monitoring challenges</span>.”</span> <em>Nature Communications</em> 12 (1): 1–10.
 </div>
 <div id="ref-szoboszlai2015forage" class="csl-entry" role="listitem">
 Szoboszlai, Amber I, Julie A Thayer, Spencer A Wood, William J Sydeman, and Laura E Koehn. 2015. <span>“<span class="nocase">Forage species in predator diets: synthesis of data from the California Current</span>.”</span> <em>Ecological Informatics</em> 29: 45–56.
 </div>
 <div id="ref-thompson2019indicators" class="csl-entry" role="listitem">
-Thompson, Andrew R, Chris J Harvey, William J Sydeman, Caren Barceló, Steven J Bograd, Richard D Brodeur, Jerome Fiechter, et al. 2019. <span>“Indicators of Pelagic Forage Community Shifts in the California Current Large Marine Ecosystem, 1998–2016.”</span> <em>Ecological Indicators</em> 105: 215–28.
+<span class="nocase">Thompson, Andrew R, Chris J Harvey, William J Sydeman, et al.</span> 2019. <span>“Indicators of Pelagic Forage Community Shifts in the California Current Large Marine Ecosystem, 1998–2016.”</span> <em>Ecological Indicators</em> 105: 215–28.
 </div>
 </div>
 

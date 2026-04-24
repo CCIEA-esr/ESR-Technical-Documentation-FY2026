@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>43&nbsp; Fleet Income Diversification – CCIEA ESR Technical Documentation</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -55,15 +57,14 @@ div.csl-indent {
 <link href="./figures/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cd43be99cf0a9c95be8483ae756cf8df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-65711dea424eaee0b27143d063beaa38.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -525,7 +526,7 @@ div.csl-indent {
 
 
 <p><strong>Description</strong> Catches and prices from many fisheries exhibit high interannual variability, leading to high variability in fisher’s revenue, but variability can be reduced by diversifying activities across multiple fisheries or regions <span class="citation" data-cites="kasperski2013income">(<a href="#ref-kasperski2013income" role="doc-biblioref">Kasperski and Holland 2013</a>)</span>. Individuals may have good reasons to specialize, including reduced costs or greater efficiency; thus while diversification may reduce income variation, it does not necessarily promote higher average profitability. We use the Effective Shannon Index (ESI) to examine diversification of fishing revenue for more than 28,000 vessels fishing off the West Coast and Alaska over the last 40 years. The ESI increases as revenues are spread across more fisheries, and as revenues are spread more evenly across fisheries; ESI = 1 when a vessel’s revenues are from a single species group and region; ESI = 2 if revenues are spread evenly across 2 fisheries; ESI = 3 if revenues are spread evenly across 3 fisheries; and so on. If revenue is not evenly distributed across fisheries, then the ESI value is lower than the number of fisheries a vessel enters.</p>
-<p>Diversification can take other forms. Spreading effort and catch over the year, or simply fishing more weeks of the year, can both increase revenue and decrease interannual variation of revenue just as species diversification does. In fact, <span class="citation" data-cites="abbott2023species">Abbott, Sakai, and Holland (<a href="#ref-abbott2023species" role="doc-biblioref">2023</a>)</span> showed that reductions in revenue variation associated with species diversification can be explained mainly by increased temporal diversification, which can be achieved by fishing in multiple fisheries but also by fishing for more weeks of the year in a single fishery. Effective Shannon Index can also be used to examine how widely and evenly vessel revenues are spread across weeks of the year as an indicator or temporal diversification. Like the species diversification metric, this index increases the more weeks of the year a vessel has revenue and the more evenly that revenue is distributed across weeks. A vessel fishing 15 weeks of the year with the same revenue each of those weeks would have a temporal ESI of 15, and that number would decline as revenue is spread less evenly over the 15 weeks.</p>
+<p>Diversification can take other forms. Spreading effort and catch over the year, or simply fishing more weeks of the year, can both increase revenue and decrease interannual variation of revenue just as species diversification does. In fact, <span class="citation" data-cites="abbott2023species">Abbott et al. (<a href="#ref-abbott2023species" role="doc-biblioref">2023</a>)</span> showed that reductions in revenue variation associated with species diversification can be explained mainly by increased temporal diversification, which can be achieved by fishing in multiple fisheries but also by fishing for more weeks of the year in a single fishery. Effective Shannon Index can also be used to examine how widely and evenly vessel revenues are spread across weeks of the year as an indicator or temporal diversification. Like the species diversification metric, this index increases the more weeks of the year a vessel has revenue and the more evenly that revenue is distributed across weeks. A vessel fishing 15 weeks of the year with the same revenue each of those weeks would have a temporal ESI of 15, and that number would decline as revenue is spread less evenly over the 15 weeks.</p>
 <p>
 </p><ul>
 <li><strong>Indicators:</strong>
@@ -572,16 +573,19 @@ div.csl-indent {
 <li><strong>Institution: </strong>NOAA NWFSC/AFSC</li>
 <li><strong>Source Data: </strong>Data derived from Pacific Fisheries Information Network (<a href="http://pacfin.psmfc.org/" target="_blank">PacFIN</a>) and Alaska Fisheries Information Network (<a href="http://www.akfin.org/" target="_blank">AKFIN</a>). Fishery diversification estimates provided by D. Holland, NMFS/NWFSC, and S. Kasperski, NMFS/AFSC.</li>
 <li><strong>Additional Calculations: </strong>Aggregation and manipulaton of vessel level annual revenue data to create effective shannon index. For details, see: Kasperski, S. and D.S. Holland 2013. Income Diversification and Risk for Fishermen. Proceedings of the National Academy of Science. 100(6):2076-2081. doi: 10.1073/pnas.1212278110; Holland, D.S. and S. Kasperski 2016. The Impact of Access Restrictions on Fishery Income Diversification of US West Coast Fishermen. Forthcoming in Coastal Management.</li>
-<li><strong>No download available </strong></li>
+<li><strong>Download data: </strong> <a href="https://raw.githubusercontent.com/CCIEA-esr/CCIEA-uploader/refs/heads/master/data/timeseries_data/HWB_vessel_diversification.csv">csv file</a></li>
 </ul>
 <p></p>
+<p><strong>Indicator Download </strong></p>
+<p>ERDDAP™ link:</p>
+<p><a href="https://oceanview.pfeg.noaa.gov/erddap/tabledap/cciea_HD_ESI_VESS.html" class="uri">https://oceanview.pfeg.noaa.gov/erddap/tabledap/cciea_HD_ESI_VESS.html</a></p>
 <p><strong>References</strong></p>
 <div class="sectionrefs">
 
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-abbott2023species" class="csl-entry" role="listitem">
 Abbott, Joshua K, Yutaro Sakai, and Daniel S Holland. 2023. <span>“Species, Space and Time: A Quarter Century of Fishers’ Diversification Strategies on the US West Coast.”</span> <em>Fish and Fisheries</em> 24 (1): 93–110.
 </div>

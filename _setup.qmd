@@ -234,26 +234,28 @@ print_meta <- function(meta,i){
     cat("* **Institution: **",meta$Institution[i],"\n",sep="")
     cat("* **Source Data: **",meta$Source_Data[i],"\n",sep="")
     if(meta$Additional_Calculations[i]!="")cat("* **Additional Calculations: **",meta$Additional_Calculations[i],"\n",sep="")
-    
+    cat("*")
+    get_github_raw_file(meta$cciea_filename[i],meta$PI_filename[i],meta$no_download[i])
+}
+
+get_github_raw_file <- function(cciea_filename,PI_filename,nodnld){
    base="https://raw.githubusercontent.com/CCIEA-esr/CCIEA-uploader/refs/heads/master/data/timeseries_data/";
-   cciea_filename_url=paste0(base,meta$cciea_filename[i],sep="")
-   PI_filename_url=paste0(base,meta$PI_filename[i],sep="")
-   if(is.na(meta$no_download[i])){
+   cciea_filename_url=paste0(base,cciea_filename,sep="")
+   PI_filename_url=paste0(base,PI_filename,sep="")
+   if(is.na(nodnld)){
     if(url_check(cciea_filename_url)){
-      cat("* **Download data: ** [csv file](",cciea_filename_url,")\n",sep="")
+      cat("\n**Download data file: ** [GitHub raw csv file](",cciea_filename_url,")","*(right-click -> save page as)*\n",sep="")
     }
      else if (url_check(PI_filename_url)){
-      cat("* **Download data: ** [csv file](",PI_filename_url,")\n",sep="")
+      cat("\n**Download data file: ** [GitHub raw csv file](",PI_filename_url,")\n","*(right-click -> save page as)*\n",sep="")
      }
      else{
-       cat("* **No download available **","\n",sep="")
+       cat("\n**No download available **","\n",sep="")
      }
    }
-   else if(meta$no_download[i]==1) {
-     cat("* **Private dataset, no download available **","\n",sep="")
+   else if(nodnld==1) {
+     cat("\n**Private dataset, no download available **","\n",sep="")
    }
-   
- 
 }
   
 #-----------print_meta_about(meta,i)----------------
@@ -283,11 +285,13 @@ print_meta_remainder <- function(meta,i){
 # print the ERDDAP link(s) for a given set of erddap_id(s)
 get_erddap_link <-function(erddap_id){
   s=""
-  if(length(erddap_id)>1)s="s"
-  cat("**Indicator Download",s," **\n\n",sep="")
-  cat("ERDDAP&trade; link",s,": \n\n",sep="")
-  for(i in 1:length(erddap_id)){
-    cat("<https://oceanview.pfeg.noaa.gov/erddap/tabledap/",erddap_id[i],".html> \n\n",sep="")
+  eid <- erddap_id
+  eid <- eid[!str_ends(eid, "_ND")]
+  if(length(eid)>1)s="s"
+#  cat("**Indicator Download",s," **\n\n",sep="")
+  cat("**ERDDAP&trade; link",s,": **\n",sep="")
+  for(i in 1:length(eid)){
+    cat("<https://oceanview.pfeg.noaa.gov/erddap/tabledap/",eid[i],".html> \n",sep="")
     }
   cat("")
   }

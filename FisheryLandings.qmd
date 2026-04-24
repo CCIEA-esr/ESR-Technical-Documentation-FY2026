@@ -19,6 +19,7 @@ cat("* **",meta$ERDDAP_query_value[i],"**\n",sep="")
 print_meta_about(meta,i)
 }
 print_meta_remainder(meta,1)
+get_github_raw_file(meta$cciea_filename[1],meta$PI_filename[1],meta$no_download[1])
 get_erddap_link(erddap_id)
 ```
 

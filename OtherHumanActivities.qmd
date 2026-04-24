@@ -13,7 +13,7 @@ We developed standardized time series of indicators for a variety of anthropogen
 #| results: 'asis'
 erddap_id='cciea_AC_nonfisheries'
 one_id_byquery(erddap_id,"Species")
-get_erddap_link(erddap_id)
+#get_erddap_link(erddap_id)
 ```
 
 **References**

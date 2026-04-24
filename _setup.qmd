@@ -81,9 +81,9 @@ one_id_bylat <-function(erddap_id){
     print_meta(meta,1)
     cat("</p>")
   }
-  else{
-    cat("<p>* **No data available**\n")
-  }
+# else{
+#    cat("<p>* **No data available**\n")
+#  }
   }
   
 #----------one_id_byquery(erddap_id,query_title) ------------
@@ -250,7 +250,7 @@ get_github_raw_file <- function(cciea_filename,PI_filename,nodnld){
       cat("\n**Download data file: ** [GitHub raw csv file](",PI_filename_url,")\n","*(right-click -> save page as)*\n",sep="")
      }
      else{
-       cat("\n**No download available **","\n",sep="")
+       cat("")
      }
    }
    else if(nodnld==1) {
@@ -291,7 +291,7 @@ get_erddap_link <-function(erddap_id){
 #  cat("**Indicator Download",s," **\n\n",sep="")
   cat("**ERDDAP&trade; link",s,": **\n",sep="")
   for(i in 1:length(eid)){
-    cat("<https://oceanview.pfeg.noaa.gov/erddap/tabledap/",eid[i],".html> \n",sep="")
+    cat("<https://oceanview.pfeg.noaa.gov/erddap/tabledap/",eid[i],".html> \n\n",sep="")
     }
   cat("")
   }
